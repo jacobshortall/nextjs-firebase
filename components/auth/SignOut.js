@@ -1,17 +1,12 @@
 "use client";
 
-import { signOut } from "firebase/auth";
-import auth from "@/app/firebase";
+import { UserAuth } from "@/context/AuthContext";
 
 const SignOut = () => {
+    const { logOut } = UserAuth();
+
     const handleClick = (event) => {
-        signOut(auth)
-            .then(() => {
-                console.log("signed out");
-            })
-            .catch((error) => {
-                console.log(error, "fuck");
-            });
+        logOut();
     };
 
     return (

@@ -1,30 +1,21 @@
 "use client";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { UserAuth } from "@/context/AuthContext";
 
-import auth from "../firebase";
 import style from "../page.module.css";
 
 const SignUp = () => {
     const router = useRouter();
+    const { signUp } = UserAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
         const data = new FormData(event.target);
         const formProps = Object.fromEntries(data);
 
-        createUserWithEmailAndPassword(auth, formProps.user, formProps.password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
-                router.push("/");
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-            });
+        signUp(formProps.user, formProps.password);
     };
     return (
         <div>

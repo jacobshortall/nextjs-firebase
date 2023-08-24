@@ -1,40 +1,24 @@
 "use client";
 
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
-import auth from "./firebase";
-
-import SignOut from "components/auth/SignOut";
 import { useRouter } from "next/navigation";
+import { UserAuth } from "@/context/AuthContext";
+import SignOut from "../../components/auth/SignOut";
 
 export default function Home() {
-    const [authenticated, setAuth] = useState(false);
-    const [loading, setLoading] = useState(true);
-
     const router = useRouter();
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setAuth(true);
-            } else {
-                setAuth(false);
-            }
-            setLoading(false);
-        });
-    }, []);
-
-    // check auth here, then render LoggedInView component or LoggedOutView?
-
-    // OR https://firebase.google.com/docs/auth/admin/manage-sessions
+    const { user } = UserAuth();
 
     let output;
-    if (loading) {
-        output = <h1>loading...</h1>;
-    } else if (authenticated) {
-        output = <SignOut />;
+    if (user) {
+        output = (
+            <div>
+                <h5>render logged in</h5>
+                <SignOut />
+            </div>
+        );
     } else {
-        router.push("/login");
+        output = <h5>render logged out</h5>;
     }
 
     return (
