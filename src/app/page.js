@@ -13,7 +13,7 @@ export default function Home() {
     if (user) {
         output = (
             <div>
-                <h5>render logged in</h5>
+                <h5>{user.email} logged in</h5>
                 <SignOut />
             </div>
         );
