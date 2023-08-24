@@ -1,7 +1,7 @@
 "use client";
 
 import { onAuthStateChanged } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import auth from "./firebase";
 
 import SignOut from "components/auth/SignOut";
@@ -13,20 +13,20 @@ export default function Home() {
 
     const router = useRouter();
 
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAuth(true);
+            } else {
+                setAuth(false);
+            }
+            setLoading(false);
+        });
+    }, []);
+
     // check auth here, then render LoggedInView component or LoggedOutView?
 
     // OR https://firebase.google.com/docs/auth/admin/manage-sessions
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setAuth(true);
-            console.log("auth: true");
-        } else {
-            setAuth(false);
-            console.log("auth: false");
-        }
-        setLoading(false);
-    });
 
     let output;
     if (loading) {
