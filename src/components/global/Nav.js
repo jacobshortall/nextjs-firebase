@@ -13,11 +13,11 @@ const Nav = () => {
         );
     } else {
         userOutput = (
-            <div>
+            <nav className="header">
                 <Link href={"login"}>Log In</Link>
                 <br></br>
                 <Link href={"signup"}>Sign Up</Link>
-            </div>
+            </nav>
         );
     }
 

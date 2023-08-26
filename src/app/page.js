@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { UserAuth } from "@/context/AuthContext";
-import SignOut from "../../components/auth/SignOut";
+import SignOut from "../components/auth/SignOut";
 
 export default function Home() {
     const router = useRouter();
