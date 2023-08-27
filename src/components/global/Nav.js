@@ -3,12 +3,12 @@ import { UserAuth } from "@/context/AuthContext";
 import SignOut from "../auth/SignOut";
 
 const Nav = () => {
-    const { user } = UserAuth();
+    const { user, userLoading } = UserAuth();
 
     return (
         <header className="header">
             <nav className="menu">
-                {user ? (
+                {userLoading ? null : user ? (
                     <div>
                         <Link className="" href={"/"}>
                             Home
