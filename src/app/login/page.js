@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { UserAuth } from "@/context/AuthContext";
-import style from "../page.module.css";
+import "../globals.css";
 
 const LogIn = () => {
     const { user, signIn } = UserAuth();
@@ -17,14 +17,16 @@ const LogIn = () => {
     return (
         <div>
             <h1>Log In</h1>
-            <form className={style.form} onSubmit={handleSubmit}>
-                <label htmlFor="user">Username</label>
-                <input id="user" name="user" type="text" />
-                <label htmlFor="password">Password</label>
-                <input id="password" name="password" type="text" />
-                <input type="submit" value="Log In" />
-            </form>
 
+            <div className="form-container">
+                <form className="form">
+                    <label htmlFor="user">Username</label>
+                    <input id="user" name="user" type="text" />
+                    <label htmlFor="password">Password</label>
+                    <input id="password" name="password" type="text" />
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
             <Link href={"/signup"}>...or sign up</Link>
         </div>
     );

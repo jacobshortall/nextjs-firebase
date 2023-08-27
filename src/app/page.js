@@ -1,14 +1,14 @@
 "use client";
 
 import { UserAuth } from "@/context/AuthContext";
-import style from "./page.module.css";
+import "./globals.css";
 
 export default function Home() {
     const { user, userLoading } = UserAuth();
 
     let output;
     if (userLoading) {
-        output = <span className={style.loader}></span>;
+        output = <span className="loader"></span>;
     } else if (user) {
         output = (
             <div>
