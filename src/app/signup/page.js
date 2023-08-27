@@ -1,12 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { UserAuth } from "@/context/AuthContext";
 
 import style from "../page.module.css";
 
 const SignUp = () => {
-    const router = useRouter();
     const { signUp } = UserAuth();
 
     const handleSubmit = (event) => {

@@ -1,20 +1,18 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { UserAuth } from "@/context/AuthContext";
-import SignOut from "../components/auth/SignOut";
+import style from "./page.module.css";
 
 export default function Home() {
-    const router = useRouter();
-
-    const { user } = UserAuth();
+    const { user, userLoading } = UserAuth();
 
     let output;
-    if (user) {
+    if (userLoading) {
+        output = <span className={style.loader}></span>;
+    } else if (user) {
         output = (
             <div>
                 <h5>{user.email} logged in</h5>
-                <SignOut />
             </div>
         );
     } else {

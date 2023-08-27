@@ -9,11 +9,7 @@ const SignOut = () => {
         logOut();
     };
 
-    return (
-        <div>
-            <button onClick={handleClick}>sign out</button>
-        </div>
-    );
+    return <button onClick={handleClick}>Sign Out</button>;
 };
 
 export default SignOut;
