@@ -44,7 +44,6 @@ export const AuthContextProvider = ({ children }) => {
         createUserWithEmailAndPassword(auth, user, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
                 router.push("/");
             })
             .catch((error) => {

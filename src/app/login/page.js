@@ -6,7 +6,6 @@ import style from "../page.module.css";
 
 const LogIn = () => {
     const { user, signIn } = UserAuth();
-    console.log(user);
 
     const handleSubmit = (event) => {
         event.preventDefault();
