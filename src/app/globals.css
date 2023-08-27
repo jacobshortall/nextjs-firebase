@@ -34,13 +34,19 @@ div {
 /* Header */
 .header {
     display: flex;
-    padding: 30px;
+    align-items: center;
+    padding: 10px;
     background: #1B263B;
     margin-bottom: 30px;
+    height: 90px;
 }
 
 .header a {
     padding: 0 15px;
+}
+
+.nav-unauthed {
+    padding: 5px 0;
 }
 
 /* Form */
@@ -94,6 +100,18 @@ div {
 }
 
 .form input:focus-visible {
+    outline: 1px solid #219ebc;
+}
+
+.sign-out {
+    background-color: transparent;
+    border: 1px solid #E0E1DD;
+    padding: 5px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.sign-out:hover {
     outline: 1px solid #219ebc;
 }
 

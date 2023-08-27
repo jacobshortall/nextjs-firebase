@@ -25,7 +25,7 @@ const SignUp = () => {
                     <label htmlFor="user">Username</label>
                     <input id="user" name="user" type="text" />
                     <label htmlFor="password">Password</label>
-                    <input id="password" name="password" type="text" />
+                    <input id="password" name="password" type="password" />
                     <button type="submit">Sign up</button>
                 </form>
             </div>

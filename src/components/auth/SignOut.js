@@ -1,6 +1,7 @@
 "use client";
 
 import { UserAuth } from "@/context/AuthContext";
+import "@/app/globals.css";
 
 const SignOut = () => {
     const { logOut } = UserAuth();
@@ -9,7 +10,11 @@ const SignOut = () => {
         logOut();
     };
 
-    return <button onClick={handleClick}>Sign Out</button>;
+    return (
+        <button className="sign-out" onClick={handleClick}>
+            Sign Out
+        </button>
+    );
 };
 
 export default SignOut;

@@ -23,7 +23,7 @@ const LogIn = () => {
                     <label htmlFor="user">Username</label>
                     <input id="user" name="user" type="text" />
                     <label htmlFor="password">Password</label>
-                    <input id="password" name="password" type="text" />
+                    <input id="password" name="password" type="password" />
                     <button type="submit">Log in</button>
                 </form>
             </div>

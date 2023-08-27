@@ -7,18 +7,20 @@ const Nav = () => {
 
     return (
         <header className="header">
-            <Link className="home" href={"/"}>
-                Home
-            </Link>
-
             <nav className="menu">
                 {user ? (
                     <div>
+                        <Link className="" href={"/"}>
+                            Home
+                        </Link>
                         <Link href={"profile"}>Profile</Link>
                         <SignOut />
                     </div>
                 ) : (
-                    <div>
+                    <div className="nav-unauthed">
+                        <Link className="" href={"/"}>
+                            Home
+                        </Link>
                         <Link href={"login"}>Log In</Link>
                         <Link href={"signup"}>Sign Up</Link>
                     </div>
