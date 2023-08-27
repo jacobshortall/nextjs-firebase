@@ -19,12 +19,12 @@ const LogIn = () => {
             <h1>Log In</h1>
 
             <div className="form-container">
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     <label htmlFor="user">Username</label>
                     <input id="user" name="user" type="text" />
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="text" />
-                    <button type="submit">Log In</button>
+                    <button type="submit">Log in</button>
                 </form>
             </div>
             <Link href={"/signup"}>...or sign up</Link>

@@ -21,12 +21,12 @@ const SignUp = () => {
             <h1>Sign Up</h1>
 
             <div className="form-container">
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     <label htmlFor="user">Username</label>
                     <input id="user" name="user" type="text" />
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="text" />
-                    <button type="submit">Sign Up</button>
+                    <button type="submit">Sign up</button>
                 </form>
             </div>
             <Link href={"/login"}>...or log in</Link>
