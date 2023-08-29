@@ -5,8 +5,7 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged
 } from "firebase/auth";
-import { auth, db } from "@/app/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
 import { addUser } from "@/functions/auth/addUser";
 

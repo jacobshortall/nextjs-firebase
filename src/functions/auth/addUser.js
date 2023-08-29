@@ -1,9 +1,9 @@
-import { addDoc, collection } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 
 const addUser = async (user) => {
     try {
-        const docRef = await addDoc(collection(db, "users"), {
+        await setDoc(doc(db, "users", user.id), {
             id: user.id,
             email: user.email,
             metadata: {
@@ -12,8 +12,6 @@ const addUser = async (user) => {
                 lastSignInTime: user.metadata.lastSignInTime
             }
         });
-
-        console.log("Document written with ID: ", docRef.id);
     } catch (e) {
         console.error("Error adding document: ", e);
     }
