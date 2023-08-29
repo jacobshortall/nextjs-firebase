@@ -5,8 +5,10 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged
 } from "firebase/auth";
-import auth from "@/app/firebase";
+import { auth, db } from "@/app/firebase";
+import { collection, addDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
+import { addUser } from "@/functions/auth/addUser";
 
 const AuthContext = createContext();
 
@@ -40,10 +42,22 @@ export const AuthContextProvider = ({ children }) => {
             });
     };
 
-    const signUp = (user, password) => {
+    const signUp = async (user, password) => {
         createUserWithEmailAndPassword(auth, user, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                const userObject = {
+                    id: user.uid,
+                    email: user.email,
+                    metadata: {
+                        createdAt: user.metadata.createdAt,
+                        creationTime: user.metadata.creationTime,
+                        lastSignInTime: user.metadata.lastSignInTime
+                    }
+                };
+
+                addUser(userObject);
+
                 router.push("/");
             })
             .catch((error) => {
