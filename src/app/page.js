@@ -19,7 +19,6 @@ export default function Home() {
         output = <h5>render logged out</h5>;
     }
 
-    console.log(user);
     return (
         <div>
             <h1>Home</h1>

@@ -26,7 +26,6 @@ const Profile = () => {
         if (!userLoading) {
             getProfileData();
         }
-        console.log(profileData);
     }, [userLoading]);
 
     return (
