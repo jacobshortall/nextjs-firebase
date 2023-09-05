@@ -3,7 +3,7 @@
 import { UserAuth } from "@/context/AuthContext";
 import "./globals.css";
 
-export default function HomeContent({ children }) {
+const HomeContentWrapper = ({ children }) => {
     const { user, userLoading } = UserAuth();
 
     let output;
@@ -13,6 +13,7 @@ export default function HomeContent({ children }) {
         output = (
             <div>
                 <h5>{user.email} logged in</h5>
+                {children}
             </div>
         );
     } else {
@@ -23,8 +24,8 @@ export default function HomeContent({ children }) {
         <div>
             <h1>Home</h1>
             {output}
-
-            {children}
         </div>
     );
-}
+};
+
+export default HomeContentWrapper;

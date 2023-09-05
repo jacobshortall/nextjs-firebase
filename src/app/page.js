@@ -1,16 +1,13 @@
-import HomeContent from "./HomeContent";
+import HomeContentWrapper from "./HomeContent";
 import Sidebar from "./Sidebar";
-import { AuthContextProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 export default function Home() {
     return (
         <div>
-            <AuthContextProvider>
-                <HomeContent>
-                    <Sidebar />
-                </HomeContent>
-            </AuthContextProvider>
+            <HomeContentWrapper>
+                <Sidebar />
+            </HomeContentWrapper>
         </div>
     );
 }
