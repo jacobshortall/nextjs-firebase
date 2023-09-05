@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { UserAuth } from "@/context/AuthContext";
+import { AuthContextProvider, UserAuth } from "@/context/AuthContext";
 import "../globals.css";
 
-const LogIn = () => {
-    const { user, signIn } = UserAuth();
+const LogInContent = () => {
+    const { signIn } = UserAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -29,6 +29,14 @@ const LogIn = () => {
             </div>
             <Link href={"/signup"}>...or sign up</Link>
         </div>
+    );
+};
+
+const LogIn = () => {
+    return (
+        <AuthContextProvider>
+            <LogInContent />
+        </AuthContextProvider>
     );
 };
 

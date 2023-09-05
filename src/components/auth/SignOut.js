@@ -1,5 +1,3 @@
-"use client";
-
 import { UserAuth } from "@/context/AuthContext";
 import "@/app/globals.css";
 

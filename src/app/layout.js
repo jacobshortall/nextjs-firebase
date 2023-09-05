@@ -1,9 +1,8 @@
-"use client";
-
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Nav from "../components/global/Nav";
 import { AuthContextProvider } from "@/context/AuthContext";
+import Sidebar from "./Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +17,10 @@ export default function RootLayout({ children }) {
             <body className={inter.className}>
                 <AuthContextProvider>
                     <Nav />
-                    {children}
+                    <Sidebar />
                 </AuthContextProvider>
+
+                {children}
             </body>
         </html>
     );

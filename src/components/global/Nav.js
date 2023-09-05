@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { UserAuth } from "@/context/AuthContext";
 import SignOut from "../auth/SignOut";
