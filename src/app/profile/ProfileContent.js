@@ -23,20 +23,24 @@ const ProfileContent = () => {
     };
 
     useEffect(() => {
-        if (!userLoading) {
+        if (!userLoading && user) {
             getProfileData();
         }
     }, [userLoading]);
+
+    if (userLoading) {
+        return <span className="loader"></span>
+    }
+
+    if (!user) {
+        return <span>You are not logged in. Log in to preview this page.</span>
+    }
 
     return (
         <div>
             <h1>Profile</h1>
 
-            {!profileData ? (
-                <span className="loader"></span>
-            ) : (
-                profileData.email
-            )}
+            {profileData.email}
         </div>
     );
 };
