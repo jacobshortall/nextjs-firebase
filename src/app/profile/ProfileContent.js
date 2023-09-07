@@ -22,6 +22,8 @@ const ProfileContent = () => {
         }
     };
 
+    // maybe separate the profile data to a profileForm component?
+
     useEffect(() => {
         if (!userLoading && user) {
             getProfileData();
