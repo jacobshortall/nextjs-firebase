@@ -15,7 +15,11 @@ const ProfileContent = () => {
     }
 
     if (!user) {
-        return <span>You are not logged in. Log in to preview this page.</span>;
+        return (
+            <div>
+                <span>You are not logged in. Log in to preview this page.</span>
+            </div>
+        );
     }
 
     return (

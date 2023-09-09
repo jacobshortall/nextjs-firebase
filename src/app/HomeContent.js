@@ -6,24 +6,28 @@ import "./globals.css";
 const HomeContentWrapper = ({ children }) => {
     const { user, userLoading } = UserAuth();
 
-    let output;
     if (userLoading) {
-        output = <span className="loader"></span>;
-    } else if (user) {
-        output = (
+        return (
             <div>
-                <h5>{user.email} logged in</h5>
-                {children}
+                <span className="loader"></span>
             </div>
         );
-    } else {
-        output = <h5>render logged out</h5>;
+    }
+
+    if (!user) {
+        return (
+            <div>
+                <span>No user logged in.</span>
+            </div>
+        );
     }
 
     return (
         <div>
             <h1>Home</h1>
-            {output}
+
+            <h5>{user.email} logged in</h5>
+            {children}
         </div>
     );
 };
