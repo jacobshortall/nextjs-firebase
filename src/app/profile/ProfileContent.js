@@ -6,14 +6,6 @@ import ProfileForm from "./ProfileForm";
 const ProfileContent = () => {
     const { user, userLoading } = UserAuth();
 
-    // maybe separate the profile data to a profileForm component?
-
-    // useEffect(() => {
-    //     if (!userLoading && user) {
-    //         getProfileData();
-    //     }
-    // }, [userLoading]);
-
     if (userLoading) {
         return (
             <div>
@@ -30,7 +22,6 @@ const ProfileContent = () => {
         <div>
             <h1>Profile</h1>
 
-            {/* {profileData.email} */}
             <ProfileForm />
         </div>
     );
