@@ -24,7 +24,7 @@ const ProfileForm = () => {
 
     useEffect(() => {
         getProfileData();
-    });
+    }, []);
 
     if (!profileData) {
         return (
