@@ -1,36 +1,20 @@
 "use client";
 
 import { UserAuth } from "@/context/AuthContext";
-import { db } from "../firebase";
-import { getDoc, doc } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import ProfileForm from "./ProfileForm";
 
 const ProfileContent = () => {
     const { user, userLoading } = UserAuth();
-    const [profileData, setProfileData] = useState();
-
-    const getProfileData = async () => {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
-            const userData = docSnap.data();
-            setProfileData(userData);
-        } else {
-            console.log("No such document!");
-        }
-    };
 
     // maybe separate the profile data to a profileForm component?
 
-    useEffect(() => {
-        if (!userLoading && user) {
-            getProfileData();
-        }
-    }, [userLoading]);
+    // useEffect(() => {
+    //     if (!userLoading && user) {
+    //         getProfileData();
+    //     }
+    // }, [userLoading]);
 
-    if (userLoading || !profileData) {
+    if (userLoading) {
         return (
             <div>
                 <span className="loader"></span>
@@ -46,7 +30,8 @@ const ProfileContent = () => {
         <div>
             <h1>Profile</h1>
 
-            {profileData.email}
+            {/* {profileData.email} */}
+            <ProfileForm />
         </div>
     );
 };
