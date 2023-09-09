@@ -30,12 +30,16 @@ const ProfileContent = () => {
         }
     }, [userLoading]);
 
-    if (userLoading) {
-        return <span className="loader"></span>
+    if (userLoading || !profileData) {
+        return (
+            <div>
+                <span className="loader"></span>
+            </div>
+        );
     }
 
     if (!user) {
-        return <span>You are not logged in. Log in to preview this page.</span>
+        return <span>You are not logged in. Log in to preview this page.</span>;
     }
 
     return (
