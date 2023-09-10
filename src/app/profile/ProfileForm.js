@@ -18,7 +18,7 @@ const ProfileForm = () => {
             const userData = docSnap.data();
             setProfileData(userData);
         } else {
-            console.log("No such document!");
+            console.log("No such document.");
         }
     };
 
