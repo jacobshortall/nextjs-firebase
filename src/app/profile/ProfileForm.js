@@ -26,6 +26,15 @@ const ProfileForm = () => {
         getProfileData();
     }, []);
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setProfileData((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
     if (!profileData) {
         return (
             <div>
@@ -34,7 +43,23 @@ const ProfileForm = () => {
         );
     }
 
-    return <div>{profileData.email}</div>;
+    return (
+        <div>
+            <span>User created on {profileData.metadata.creationTime}</span>
+
+            <form>
+                <input
+                    type="email"
+                    name="email"
+                    value={profileData.email}
+                    onChange={handleChange}
+                ></input>
+            </form>
+
+            <br />
+            <span>{profileData.email}</span>
+        </div>
+    );
 };
 
 export default ProfileForm;
