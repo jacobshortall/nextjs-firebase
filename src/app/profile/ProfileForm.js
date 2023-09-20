@@ -1,7 +1,7 @@
 "use client";
 
 import { db } from "../firebase";
-import { getDoc, doc } from "firebase/firestore";
+import { setDoc, getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { UserAuth } from "@/context/AuthContext";
 
@@ -35,6 +35,10 @@ const ProfileForm = () => {
         }));
     };
 
+    const handleClick = async (event) => {
+        await setDoc(doc(db, "users", profileData.id), profileData, {merge: true});
+    }
+
     if (!profileData) {
         return (
             <div>
@@ -47,17 +51,19 @@ const ProfileForm = () => {
         <div>
             <span>User created on {profileData.metadata.creationTime}</span>
 
-            <form>
+            <form onSubmit={(event) => {event.preventDefault()}}>
                 <input
                     type="email"
                     name="email"
                     value={profileData.email}
                     onChange={handleChange}
                 ></input>
+                <input type="text" name="name" value={profileData.name ? profileData.name : null} onChange={handleChange}></input>
             </form>
 
             <br />
-            <span>{profileData.email}</span>
+
+            <button className="update-profile" onClick={handleClick}>Update</button>
         </div>
     );
 };
