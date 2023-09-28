@@ -35,6 +35,15 @@ const ProfileForm = () => {
         }));
     };
 
+    const handleBlur = (event) => {
+        const { name, value } = event.target;
+
+        setProfileData((prevState) => ({
+            ...prevState,
+            [name]: value.trim()
+        }));
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -59,7 +68,7 @@ const ProfileForm = () => {
 
             <form onSubmit={handleSubmit} className="profile-form form">
                 <label htmlFor="profile-name">Display Name</label>
-                <input type="text" name="name" id="profile-name" value={profileData.name ? profileData.name : null} onChange={handleChange}></input>
+                <input type="text" name="name" id="profile-name" value={profileData.name ? profileData.name : null} onBlur={handleBlur} onChange={handleChange}></input>
                 <button type="submit" className="update-profile">Update</button>
             </form>
 
