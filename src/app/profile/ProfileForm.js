@@ -35,8 +35,14 @@ const ProfileForm = () => {
         }));
     };
 
-    const handleClick = async (event) => {
-        await setDoc(doc(db, "users", profileData.id), profileData, {merge: true});
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            await setDoc(doc(db, "users", profileData.id), profileData, {merge: true});
+        } catch (error) {
+            console.log('Error:', error);
+        }
     }
 
     if (!profileData) {
@@ -51,19 +57,14 @@ const ProfileForm = () => {
         <div>
             <span>User created on {profileData.metadata.creationTime}</span>
 
-            <form onSubmit={(event) => {event.preventDefault()}}>
-                <input
-                    type="email"
-                    name="email"
-                    value={profileData.email}
-                    onChange={handleChange}
-                ></input>
-                <input type="text" name="name" value={profileData.name ? profileData.name : null} onChange={handleChange}></input>
+            <form onSubmit={handleSubmit} className="profile-form form">
+                <label htmlFor="profile-name">Display Name</label>
+                <input type="text" name="name" id="profile-name" value={profileData.name ? profileData.name : null} onChange={handleChange}></input>
+                <button type="submit" className="update-profile">Update</button>
             </form>
 
             <br />
 
-            <button className="update-profile" onClick={handleClick}>Update</button>
         </div>
     );
 };

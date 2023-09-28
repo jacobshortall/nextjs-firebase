@@ -141,3 +141,8 @@ div {
     padding: 5px 15px;
     cursor: pointer;
 }
+
+.profile-form {
+    margin: auto;
+    gap: 0;
+}
