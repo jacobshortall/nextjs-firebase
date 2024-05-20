@@ -6,7 +6,7 @@ import Link from "next/link";
 import "../globals.css";
 
 const SignUpForm = () => {
-    const { user, userLoading, signUp } = UserAuth();
+    const { user, userLoading, formSubmitted, signUp } = UserAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -43,10 +43,19 @@ const SignUpForm = () => {
                     <input id="user" name="user" type="text" />
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="password" />
-                    <button type="submit">Sign up</button>
+
+                    {formSubmitted ? (
+                        <button type="submit">
+                            <span className="loader"></span>
+                        </button>
+                    ) : (
+                        <button type="submit">Sign up</button>
+                    )}
                 </form>
             </div>
             <Link href={"/login"}>...or log in</Link>
+
+            <span className="error"></span>
         </div>
     );
 };

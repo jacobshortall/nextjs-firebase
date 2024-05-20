@@ -16,6 +16,7 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [userLoading, setUserLoading] = useState(true);
+    const [formSubmitted, setFormSubmitted] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -44,6 +45,7 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     const signUp = async (user, password) => {
+        setFormSubmitted(true);
         createUserWithEmailAndPassword(auth, user, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -62,9 +64,19 @@ export const AuthContextProvider = ({ children }) => {
                 router.push("/");
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
+                setFormSubmitted(false);
+
+                console.log("Error signing up: ", error.message);
+
+                const errorMsgElement = document.querySelector(".error");
+                if (errorMsgElement) {
+                    errorMsgElement.style.display = "block";
+                    errorMsgElement.innerHTML = error.message;
+
+                    setTimeout(() => {
+                        errorMsgElement.style.display = "none";
+                    }, 2000);
+                }
             });
     };
 
@@ -81,7 +93,7 @@ export const AuthContextProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ user, userLoading, logOut, signIn, signUp }}
+            value={{ user, userLoading, formSubmitted, logOut, signIn, signUp }}
         >
             {children}
         </AuthContext.Provider>

@@ -20,6 +20,16 @@ a {
   text-decoration: none;
 }
 
+.error {
+    display: none;
+    margin: 15px;
+    padding: 15px;
+    background: rgb(215, 64, 58);
+    max-width: 300px;
+    margin: 30px auto;
+    border-radius: 7px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -125,6 +135,10 @@ div {
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
+}
+form .loader {
+    width: 22px;
+    height: 22px;
 }
 
 @keyframes rotation {
