@@ -147,10 +147,21 @@ form .loader {
 }
 
 @keyframes rotation {
-0% {
-    transform: rotate(0deg);
-}
-100% {
-    transform: rotate(360deg);
-}
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 } 
+
+/* Profile */
+.update-profile {
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.profile-form {
+    margin: auto;
+    gap: 0;
+}
