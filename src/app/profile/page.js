@@ -1,7 +1,7 @@
-import ProfileContent from "./ProfileContent";
+import ProfileContent from './ProfileContent';
 
 const Profile = () => {
-    console.log("profile server");
+    console.log('profile server');
 
     return <ProfileContent />;
 };

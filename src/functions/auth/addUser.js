@@ -1,10 +1,10 @@
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "@/app/firebase";
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '@/app/firebase';
 
 /** Adds a user document that acts as a profile */
 const addUser = async (user) => {
     try {
-        await setDoc(doc(db, "users", user.id), {
+        await setDoc(doc(db, 'users', user.id), {
             id: user.id,
             email: user.email,
             metadata: {
@@ -14,7 +14,7 @@ const addUser = async (user) => {
             }
         });
     } catch (e) {
-        console.error("Error adding document: ", e);
+        console.error('Error adding document: ', e);
     }
 };
 

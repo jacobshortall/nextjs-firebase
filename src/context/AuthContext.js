@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext, createContext, useState, useEffect } from 'react';
 import {
     signInWithEmailAndPassword,
     signOut,
     createUserWithEmailAndPassword,
     onAuthStateChanged
-} from "firebase/auth";
-import { auth } from "@/app/firebase";
-import { useRouter } from "next/navigation";
-import { addUser } from "@/functions/auth/addUser";
-import { showError } from "@/functions/helper";
+} from 'firebase/auth';
+import { auth } from '@/app/firebase';
+import { useRouter } from 'next/navigation';
+import { addUser } from '@/functions/auth/addUser';
+import { showError } from '@/functions/helper';
 
 const AuthContext = createContext();
 
@@ -39,13 +39,13 @@ export const AuthContextProvider = ({ children }) => {
         setFormSubmitted(true);
         signInWithEmailAndPassword(auth, user, password)
             .then((userCredential) => {
-                router.push("/");
+                router.push('/');
                 setFormSubmitted(false);
             })
             .catch((error) => {
                 setFormSubmitted(false);
 
-                console.log("Error signing in: ", error.message);
+                console.log('Error signing in: ', error.message);
                 showError(error.message);
             });
     };
@@ -67,13 +67,13 @@ export const AuthContextProvider = ({ children }) => {
 
                 addUser(userObject);
 
-                router.push("/");
+                router.push('/');
                 setFormSubmitted(false);
             })
             .catch((error) => {
                 setFormSubmitted(false);
 
-                console.log("Error signing up: ", error.message);
+                console.log('Error signing up: ', error.message);
                 showError(error.message);
             });
     };
@@ -81,10 +81,10 @@ export const AuthContextProvider = ({ children }) => {
     const logOut = () => {
         signOut(auth)
             .then(() => {
-                router.push("/");
+                router.push('/');
             })
             .catch((error) => {
-                console.log(error, "error signing out");
+                console.log(error, 'error signing out');
             });
     };
 

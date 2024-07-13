@@ -1,6 +1,6 @@
-import HomeContentWrapper from "./HomeContent";
-import Sidebar from "./Sidebar";
-import "./globals.css";
+import HomeContentWrapper from './HomeContent';
+import Sidebar from './Sidebar';
+import './globals.css';
 
 export default function Home() {
     return (

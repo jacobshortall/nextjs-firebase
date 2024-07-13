@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { UserAuth } from "@/context/AuthContext";
-import "./globals.css";
+import { UserAuth } from '@/context/AuthContext';
+import './globals.css';
 
 const HomeContentWrapper = ({ children }) => {
     const { user, userLoading } = UserAuth();

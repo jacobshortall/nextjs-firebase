@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { UserAuth } from "@/context/AuthContext";
-import ProfileForm from "./ProfileForm";
+import { UserAuth } from '@/context/AuthContext';
+import ProfileForm from './ProfileForm';
 
 const ProfileContent = () => {
     const { user, userLoading } = UserAuth();

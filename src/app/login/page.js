@@ -1,5 +1,5 @@
-import LogInForm from "./LogInForm";
-import "../globals.css";
+import LogInForm from './LogInForm';
+import '../globals.css';
 
 const LogIn = () => {
     return <LogInForm />;

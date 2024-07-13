@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { UserAuth } from "@/context/AuthContext";
+import Link from 'next/link';
+import { UserAuth } from '@/context/AuthContext';
 
 const LogInForm = () => {
     const { user, userLoading, signIn, formSubmitted } = UserAuth();
@@ -50,7 +50,7 @@ const LogInForm = () => {
                     )}
                 </form>
             </div>
-            <Link href={"/signup"}>...or sign up</Link>
+            <Link href={'/signup'}>...or sign up</Link>
 
             <span className="error"></span>
         </div>

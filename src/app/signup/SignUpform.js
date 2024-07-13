@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { UserAuth } from "@/context/AuthContext";
-import Link from "next/link";
+import { UserAuth } from '@/context/AuthContext';
+import Link from 'next/link';
 
-import "../globals.css";
+import '../globals.css';
 
 const SignUpForm = () => {
     const { user, userLoading, formSubmitted, signUp } = UserAuth();
@@ -53,7 +53,7 @@ const SignUpForm = () => {
                     )}
                 </form>
             </div>
-            <Link href={"/login"}>...or log in</Link>
+            <Link href={'/login'}>...or log in</Link>
 
             <span className="error"></span>
         </div>
