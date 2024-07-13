@@ -38,6 +38,7 @@ export const AuthContextProvider = ({ children }) => {
                 console.log(`${user.email} logged in`);
 
                 router.push("/");
+                setFormSubmitted(false);
             })
             .catch((error) => {
                 setFormSubmitted(false);
@@ -65,6 +66,7 @@ export const AuthContextProvider = ({ children }) => {
                 addUser(userObject);
 
                 router.push("/");
+                setFormSubmitted(false);
             })
             .catch((error) => {
                 setFormSubmitted(false);
