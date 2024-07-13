@@ -1,6 +1,7 @@
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 
+/** Adds a user document that acts as a profile */
 const addUser = async (user) => {
     try {
         await setDoc(doc(db, "users", user.id), {

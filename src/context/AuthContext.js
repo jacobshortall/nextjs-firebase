@@ -21,22 +21,24 @@ export const AuthContextProvider = ({ children }) => {
     const router = useRouter();
 
     useEffect(() => {
-        const userStateChange = onAuthStateChanged(auth, (currentUser) => {
+        // WHY DID I DO THIS? LEAVING HERE JUST IN CASE LOL
+        // const userStateChange = onAuthStateChanged(auth, (currentUser) => {
+        //     setUser(currentUser);
+        //     console.log("new", currentUser);
+        //     setUserLoading(false);
+        // });
+        // return () => userStateChange();
+
+        onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setUserLoading(false);
         });
-        return () => userStateChange();
-    }, [user]);
+    }, []);
 
     const signIn = (user, password) => {
         setFormSubmitted(true);
         signInWithEmailAndPassword(auth, user, password)
             .then((userCredential) => {
-                const user = userCredential.user;
-                setUser(user);
-
-                console.log(`${user.email} logged in`);
-
                 router.push("/");
                 setFormSubmitted(false);
             })
@@ -79,7 +81,6 @@ export const AuthContextProvider = ({ children }) => {
     const logOut = () => {
         signOut(auth)
             .then(() => {
-                console.log("signed out");
                 router.push("/");
             })
             .catch((error) => {
