@@ -10,6 +10,7 @@ import {
 import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
 import { addUser } from "@/functions/auth/addUser";
+import { showError } from "@/functions/helper";
 
 const AuthContext = createContext();
 
@@ -28,6 +29,7 @@ export const AuthContextProvider = ({ children }) => {
     }, [user]);
 
     const signIn = (user, password) => {
+        setFormSubmitted(true);
         signInWithEmailAndPassword(auth, user, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -38,9 +40,10 @@ export const AuthContextProvider = ({ children }) => {
                 router.push("/");
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
+                setFormSubmitted(false);
+
+                console.log("Error signing in: ", error.message);
+                showError(error.message);
             });
     };
 
@@ -67,16 +70,7 @@ export const AuthContextProvider = ({ children }) => {
                 setFormSubmitted(false);
 
                 console.log("Error signing up: ", error.message);
-
-                const errorMsgElement = document.querySelector(".error");
-                if (errorMsgElement) {
-                    errorMsgElement.style.display = "block";
-                    errorMsgElement.innerHTML = error.message;
-
-                    setTimeout(() => {
-                        errorMsgElement.style.display = "none";
-                    }, 2000);
-                }
+                showError(error.message);
             });
     };
 

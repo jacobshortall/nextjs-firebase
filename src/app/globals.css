@@ -21,13 +21,18 @@ a {
 }
 
 .error {
-    display: none;
+    display: block;
+    opacity: 0;
+    transition: .2s opacity;
     margin: 15px;
     padding: 15px;
     background: rgb(215, 64, 58);
     max-width: 300px;
     margin: 30px auto;
     border-radius: 7px;
+}
+.error.visible {
+    opacity: 1;
 }
 
 @media (prefers-color-scheme: dark) {
