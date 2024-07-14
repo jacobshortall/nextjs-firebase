@@ -35,7 +35,9 @@ const ProfileForm = ({ setProfileData, profileData }) => {
     };
 
     return (
-        <div>
+        <>
+            <h2>Edit Profile</h2>
+
             <form onSubmit={handleSubmit} className="profile-form form">
                 <label htmlFor="profile-name">Display Name</label>
                 <input
@@ -52,7 +54,7 @@ const ProfileForm = ({ setProfileData, profileData }) => {
             </form>
 
             <br />
-        </div>
+        </>
     );
 };
 

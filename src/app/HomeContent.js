@@ -22,12 +22,12 @@ const HomeContentWrapper = ({ children }) => {
     }
 
     return (
-        <div>
+        <>
             <h1>Home</h1>
 
             <h5>{user.email} logged in</h5>
             {children}
-        </div>
+        </>
     );
 };
 

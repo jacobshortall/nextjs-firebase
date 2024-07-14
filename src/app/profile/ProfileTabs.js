@@ -21,7 +21,6 @@ const ProfileTabs = () => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log('Document data:', docSnap.data());
             const userData = docSnap.data();
             setProfileData(userData);
         } else {
