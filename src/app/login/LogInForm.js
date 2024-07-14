@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { UserAuth } from '@/context/AuthContext';
 
 const LogInForm = () => {
-    const { user, userLoading, signIn, formSubmitted } = UserAuth();
+    const { signIn, formSubmitted } = UserAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -14,26 +14,8 @@ const LogInForm = () => {
         signIn(formProps.user, formProps.password);
     };
 
-    if (userLoading) {
-        return (
-            <div>
-                <span className="loader"></span>
-            </div>
-        );
-    }
-
-    if (user) {
-        return (
-            <div>
-                <span>You are already logged in.</span>
-            </div>
-        );
-    }
-
     return (
         <div>
-            <h1>Log In</h1>
-
             <div className="form-container">
                 <form className="form" onSubmit={handleSubmit}>
                     <label htmlFor="user">Username</label>

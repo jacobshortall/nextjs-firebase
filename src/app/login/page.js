@@ -1,8 +1,12 @@
+import LogInContentWrapper from './LogInContent';
 import LogInForm from './LogInForm';
-import '../globals.css';
 
 const LogIn = () => {
-    return <LogInForm />;
+    return (
+        <LogInContentWrapper>
+            <LogInForm />
+        </LogInContentWrapper>
+    );
 };
 
 export default LogIn;

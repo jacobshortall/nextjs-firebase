@@ -2,7 +2,7 @@
 
 import { UserAuth } from '@/context/AuthContext';
 
-const ProfileContentWrapper = ({ children }) => {
+const LogInContentWrapper = ({ children }) => {
     const { user, userLoading } = UserAuth();
 
     if (userLoading) {
@@ -13,21 +13,21 @@ const ProfileContentWrapper = ({ children }) => {
         );
     }
 
-    if (!user) {
+    if (user) {
         return (
             <div>
-                <span>You are not logged in. Log in to preview this page.</span>
+                <span>You are already logged in.</span>
             </div>
         );
     }
 
     return (
         <div>
-            <h1>Profile</h1>
+            <h1>Log In</h1>
 
             {children}
         </div>
     );
 };
 
-export default ProfileContentWrapper;
+export default LogInContentWrapper;

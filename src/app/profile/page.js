@@ -1,9 +1,14 @@
-import ProfileContent from './ProfileContent';
+import ProfileContentWrapper from './ProfileContent';
+import ProfileForm from './ProfileForm';
 
 const Profile = () => {
     console.log('profile server');
 
-    return <ProfileContent />;
+    return (
+        <ProfileContentWrapper>
+            <ProfileForm />
+        </ProfileContentWrapper>
+    );
 };
 
 export default Profile;

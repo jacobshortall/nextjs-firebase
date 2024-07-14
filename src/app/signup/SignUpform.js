@@ -3,10 +3,8 @@
 import { UserAuth } from '@/context/AuthContext';
 import Link from 'next/link';
 
-import '../globals.css';
-
 const SignUpForm = () => {
-    const { user, userLoading, formSubmitted, signUp } = UserAuth();
+    const { formSubmitted, signUp } = UserAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -17,26 +15,8 @@ const SignUpForm = () => {
         signUp(formProps.user, formProps.password);
     };
 
-    if (userLoading) {
-        return (
-            <div>
-                <span className="loader"></span>
-            </div>
-        );
-    }
-
-    if (user) {
-        return (
-            <div>
-                <span>You already have an account.</span>
-            </div>
-        );
-    }
-
     return (
         <div>
-            <h1>Sign Up</h1>
-
             <div className="form-container">
                 <form className="form" onSubmit={handleSubmit}>
                     <label htmlFor="user">Username</label>
