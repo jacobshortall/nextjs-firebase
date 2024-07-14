@@ -23,7 +23,7 @@ a {
 .error {
     display: block;
     opacity: 0;
-    transition: .2s opacity;
+    transition: .3s opacity;
     margin: 15px;
     padding: 15px;
     background: rgb(215, 64, 58);
@@ -124,6 +124,7 @@ div {
     padding: 5px;
     border-radius: 7px;
     cursor: pointer;
+    margin-inline: 15px;
 }
 
 .sign-out:hover {
