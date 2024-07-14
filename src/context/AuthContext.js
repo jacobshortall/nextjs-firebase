@@ -21,14 +21,6 @@ export const AuthContextProvider = ({ children }) => {
     const router = useRouter();
 
     useEffect(() => {
-        // WHY DID I DO THIS? LEAVING HERE JUST IN CASE LOL
-        // const userStateChange = onAuthStateChanged(auth, (currentUser) => {
-        //     setUser(currentUser);
-        //     console.log("new", currentUser);
-        //     setUserLoading(false);
-        // });
-        // return () => userStateChange();
-
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setUserLoading(false);

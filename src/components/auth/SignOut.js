@@ -1,5 +1,4 @@
 import { UserAuth } from '@/context/AuthContext';
-import '@/app/globals.css';
 
 const SignOut = () => {
     const { logOut } = UserAuth();
