@@ -20,6 +20,18 @@ a {
   text-decoration: none;
 }
 
+.success {
+    display: block;
+    opacity: 0;
+    transition: .3s opacity;
+    margin: 15px;
+    padding: 15px;
+    background: #28a745; 
+    max-width: 300px;
+    margin: 30px auto;
+    border-radius: 7px;
+}
+
 .error {
     display: block;
     opacity: 0;
@@ -31,7 +43,8 @@ a {
     margin: 30px auto;
     border-radius: 7px;
 }
-.error.visible {
+
+.visible {
     opacity: 1;
 }
 

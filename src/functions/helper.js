@@ -1,4 +1,4 @@
-export const showError = (message) => {
+const showError = (message) => {
     const errorMsgElement = document.querySelector('.error');
 
     if (errorMsgElement) {
@@ -10,3 +10,18 @@ export const showError = (message) => {
         }, 3000);
     }
 };
+
+const showSuccess = (message) => {
+    const successMsgElement = document.querySelector('.success');
+
+    if (successMsgElement) {
+        successMsgElement.classList.toggle('visible');
+        successMsgElement.innerHTML = message;
+
+        setTimeout(() => {
+            successMsgElement.classList.toggle('visible');
+        }, 3000);
+    }
+};
+
+export { showError, showSuccess };
