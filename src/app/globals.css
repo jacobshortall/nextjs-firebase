@@ -166,3 +166,25 @@ form .loader {
     margin: auto;
     gap: 0;
 }
+
+.profile-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.profile-tab {
+    background: #1B263B;
+    padding: 20px;
+    width: 10%;
+    min-width: 150px;
+    cursor: pointer;
+    opacity: .6;
+    transition: .3s opacity;
+}
+
+.profile-tab.toggled,
+.profile-tab:hover {
+    opacity: 1;
+}

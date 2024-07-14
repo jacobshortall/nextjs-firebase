@@ -1,12 +1,12 @@
 import ProfileContentWrapper from './ProfileContent';
-import ProfileForm from './ProfileForm';
+import ProfileTabs from './ProfileTabs';
 
 const Profile = () => {
     console.log('profile server');
 
     return (
         <ProfileContentWrapper>
-            <ProfileForm />
+            <ProfileTabs />
         </ProfileContentWrapper>
     );
 };
