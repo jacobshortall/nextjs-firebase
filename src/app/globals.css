@@ -188,3 +188,12 @@ form .loader {
 .profile-tab:hover {
     opacity: 1;
 }
+
+.profile-info {
+    margin: 30px;
+}
+
+.profile-info > span {
+    display: block;
+    margin: 10px;
+}

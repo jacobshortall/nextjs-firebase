@@ -1,11 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import ProfileInfo from './ProfileInfo';
 import ProfileForm from './ProfileForm';
+import { UserAuth } from '@/context/AuthContext';
 
 const ProfileTabs = () => {
     const [profileTab, setProfileTab] = useState('details');
+    const [profileData, setProfileData] = useState();
+    const { user } = UserAuth();
+
+    useEffect(() => {
+        getProfileData();
+    }, []);
+
+    const getProfileData = async () => {
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            console.log('Document data:', docSnap.data());
+            const userData = docSnap.data();
+            setProfileData(userData);
+        } else {
+            console.log('No such document.');
+        }
+    };
 
     const handleClick = (event, option) => {
         setProfileTab(option);
@@ -17,6 +39,14 @@ const ProfileTabs = () => {
 
         event.target.classList.add('toggled');
     };
+
+    if (!profileData) {
+        return (
+            <div>
+                <span className="loader"></span>
+            </div>
+        );
+    }
 
     return (
         <div>
@@ -36,7 +66,14 @@ const ProfileTabs = () => {
                 </div>
             </div>
 
-            {profileTab == 'details' ? <ProfileInfo /> : <ProfileForm />}
+            {profileTab == 'details' ? (
+                <ProfileInfo profileData={profileData} user={user} />
+            ) : (
+                <ProfileForm
+                    setProfileData={setProfileData}
+                    profileData={profileData}
+                />
+            )}
         </div>
     );
 };
