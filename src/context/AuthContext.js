@@ -10,7 +10,6 @@ import {
 import { auth } from '@/app/firebase';
 import { useRouter } from 'next/navigation';
 import { addUser } from '@/functions/auth/addUser';
-import { showError } from '@/functions/helper';
 
 const AuthContext = createContext();
 
@@ -18,6 +17,7 @@ export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [userLoading, setUserLoading] = useState(true);
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [formError, setFormError] = useState(['', '']);
     const router = useRouter();
 
     useEffect(() => {
@@ -37,8 +37,7 @@ export const AuthContextProvider = ({ children }) => {
             .catch((error) => {
                 setFormSubmitted(false);
 
-                console.log('Error signing in: ', error.message);
-                showError(error.message);
+                setFormError(['error', `Error signing in: ${error.message}`]);
             });
     };
 
@@ -65,8 +64,7 @@ export const AuthContextProvider = ({ children }) => {
             .catch((error) => {
                 setFormSubmitted(false);
 
-                console.log('Error signing up: ', error.message);
-                showError(error.message);
+                setFormError(['error', `Error signing up: ${error.message}`]);
             });
     };
 
@@ -82,7 +80,15 @@ export const AuthContextProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ user, userLoading, formSubmitted, logOut, signIn, signUp }}
+            value={{
+                user,
+                userLoading,
+                formSubmitted,
+                formError,
+                logOut,
+                signIn,
+                signUp
+            }}
         >
             {children}
         </AuthContext.Provider>

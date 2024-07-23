@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { UserAuth } from '@/context/AuthContext';
+import { Toast } from '@/components/global/Toast';
 
 const LogInForm = () => {
-    const { signIn, formSubmitted } = UserAuth();
+    const { signIn, formSubmitted, formError } = UserAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,7 +16,7 @@ const LogInForm = () => {
     };
 
     return (
-        <div>
+        <>
             <div className="form-container">
                 <form className="form" onSubmit={handleSubmit}>
                     <label htmlFor="user">Username</label>
@@ -32,10 +33,11 @@ const LogInForm = () => {
                     )}
                 </form>
             </div>
+
             <Link href={'/signup'}>...or sign up</Link>
 
-            <span className="error"></span>
-        </div>
+            <Toast toastState={formError} />
+        </>
     );
 };
 
