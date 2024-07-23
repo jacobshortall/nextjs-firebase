@@ -48,7 +48,7 @@ const ProfileTabs = () => {
     }
 
     return (
-        <div>
+        <>
             <div className="profile-tabs">
                 <div
                     className="profile-tab toggled"
@@ -73,7 +73,7 @@ const ProfileTabs = () => {
                     profileData={profileData}
                 />
             )}
-        </div>
+        </>
     );
 };
 

@@ -2,9 +2,12 @@
 
 import { db } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
-import { showError, showSuccess } from '@/functions/helper';
+import { Toast } from '@/components/global/Toast';
+import { useState } from 'react';
 
 const ProfileForm = ({ setProfileData, profileData }) => {
+    const [toastState, setToastState] = useState(['', '']);
+
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -31,14 +34,14 @@ const ProfileForm = ({ setProfileData, profileData }) => {
 
         for (const field of formFields) {
             if (!field.value) {
+                emptyFields = true;
                 const fieldLabel = document.querySelector(`[for=${field.id}]`);
                 fieldLabel.classList.add('field-error');
-                emptyFields = true;
             }
         }
 
         if (emptyFields) {
-            showError('Please fill in all required fields');
+            setToastState(['error', 'Please fill in of the required fields']);
             return;
         } else {
             const fieldLabels = event.target.querySelectorAll('label');
@@ -53,9 +56,9 @@ const ProfileForm = ({ setProfileData, profileData }) => {
                 merge: true
             });
 
-            showSuccess('Profile Updated');
+            setToastState(['success', 'Profile Updated']);
         } catch (error) {
-            console.log('Error:', error);
+            setToastState(['error', `${error}`]);
         }
     };
 
@@ -109,10 +112,9 @@ const ProfileForm = ({ setProfileData, profileData }) => {
                 </button>
             </form>
 
-            <br />
+            <Toast toastState={toastState} />
 
-            <span className="success"></span>
-            <span className="error"></span>
+            <br />
         </>
     );
 };
