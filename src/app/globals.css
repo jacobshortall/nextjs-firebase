@@ -20,28 +20,29 @@ a {
   text-decoration: none;
 }
 
-.success {
-    display: block;
-    opacity: 0;
+.toast-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    margin: auto;
     transition: .3s opacity;
-    margin: 15px;
+    opacity: 0;
     padding: 15px;
-    background: #28a745; 
     max-width: 300px;
-    margin: 30px auto;
     border-radius: 7px;
 }
 
+[data-visible="true"] {
+    opacity: 1;
+}
+
+.success {
+    background: #28a745; 
+}
+
 .error {
-    display: block;
-    opacity: 0;
-    transition: .3s opacity;
-    margin: 15px;
-    padding: 15px;
     background: rgb(215, 64, 58);
-    max-width: 300px;
-    margin: 30px auto;
-    border-radius: 7px;
 }
 
 .field-error {
