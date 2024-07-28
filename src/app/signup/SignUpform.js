@@ -5,7 +5,7 @@ import { UserAuth } from '@/context/AuthContext';
 import Link from 'next/link';
 
 const SignUpForm = () => {
-    const { formSubmitted, signUp, formError } = UserAuth();
+    const { formSubmitted, signUp } = UserAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -35,8 +35,6 @@ const SignUpForm = () => {
                 </form>
             </div>
             <Link href={'/login'}>...or log in</Link>
-
-            <Toast toastState={formError} />
         </div>
     );
 };

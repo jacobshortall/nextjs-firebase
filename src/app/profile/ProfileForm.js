@@ -2,11 +2,10 @@
 
 import { db } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
-import { Toast } from '@/components/global/Toast';
-import { useState } from 'react';
+import { useToast } from '@/context/ToastContext';
 
 const ProfileForm = ({ setProfileData, profileData }) => {
-    const [toastState, setToastState] = useState(['', '']);
+    const { openToast } = useToast();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -41,7 +40,7 @@ const ProfileForm = ({ setProfileData, profileData }) => {
         }
 
         if (emptyFields) {
-            setToastState(['error', 'Please fill in of the required fields']);
+            openToast('error', 'Please fill in all required fields');
             return;
         } else {
             const fieldLabels = event.target.querySelectorAll('label');
@@ -56,9 +55,9 @@ const ProfileForm = ({ setProfileData, profileData }) => {
                 merge: true
             });
 
-            setToastState(['success', 'Profile Updated']);
+            openToast('success', 'Profile Updated');
         } catch (error) {
-            setToastState(['error', `${error}`]);
+            openToast('error', `${error}`);
         }
     };
 
@@ -111,8 +110,6 @@ const ProfileForm = ({ setProfileData, profileData }) => {
                     Update
                 </button>
             </form>
-
-            <Toast toastState={toastState} />
 
             <br />
         </>

@@ -26,15 +26,9 @@ a {
     right: 0;
     bottom: 20px;
     margin: auto;
-    transition: .3s opacity;
-    opacity: 0;
     padding: 15px;
     max-width: 300px;
     border-radius: 7px;
-}
-
-[data-visible="true"] {
-    opacity: 1;
 }
 
 .success {

@@ -10,6 +10,7 @@ import {
 import { auth } from '@/app/firebase';
 import { useRouter } from 'next/navigation';
 import { addUser } from '@/functions/auth/addUser';
+import { useToast } from './ToastContext';
 
 const AuthContext = createContext();
 
@@ -17,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [userLoading, setUserLoading] = useState(true);
     const [formSubmitted, setFormSubmitted] = useState(false);
-    const [formError, setFormError] = useState(['', '']);
+    const { openToast } = useToast();
     const router = useRouter();
 
     useEffect(() => {
@@ -37,7 +38,7 @@ export const AuthContextProvider = ({ children }) => {
             .catch((error) => {
                 setFormSubmitted(false);
 
-                setFormError(['error', `Error signing in: ${error.message}`]);
+                openToast('error', `Error signing in: ${error.message}`);
             });
     };
 
@@ -64,7 +65,7 @@ export const AuthContextProvider = ({ children }) => {
             .catch((error) => {
                 setFormSubmitted(false);
 
-                setFormError(['error', `Error signing up: ${error.message}`]);
+                openToast('error', `Error signing up: ${error.message}`);
             });
     };
 
@@ -84,7 +85,6 @@ export const AuthContextProvider = ({ children }) => {
                 user,
                 userLoading,
                 formSubmitted,
-                formError,
                 logOut,
                 signIn,
                 signUp
