@@ -20,15 +20,28 @@ a {
   text-decoration: none;
 }
 
-.toast-wrapper {
+.toast-list {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 20px;
-    margin: auto;
-    padding: 15px;
     max-width: 300px;
+    margin: auto;
+}
+
+.toast-wrapper {
     border-radius: 7px;
+    margin-block: 15px;
+    position: relative;
+    padding: 20px 30px;
+}
+
+.toast-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .success {

@@ -13,7 +13,14 @@ const Toast = ({ type, message, close }) => {
         setTimeout(close, 5000);
     }, []);
 
-    return <div className={className}>{message}</div>;
+    return (
+        <div className={className}>
+            <span className="toast-close" onClick={close}>
+                &#x2715;
+            </span>
+            <span>{message}</span>
+        </div>
+    );
 };
 
 export { Toast };

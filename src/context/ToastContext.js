@@ -27,16 +27,18 @@ const ToastContextProvider = ({ children }) => {
         <ToastContext.Provider value={{ openToast }}>
             {children}
 
-            {toasts.map((toast) => {
-                return (
-                    <Toast
-                        key={toast.id}
-                        type={toast.type}
-                        message={toast.message}
-                        close={() => closeToast(toast.id)}
-                    />
-                );
-            })}
+            <div className="toast-list">
+                {toasts.map((toast) => {
+                    return (
+                        <Toast
+                            key={toast.id}
+                            type={toast.type}
+                            message={toast.message}
+                            close={() => closeToast(toast.id)}
+                        />
+                    );
+                })}
+            </div>
         </ToastContext.Provider>
     );
 };
