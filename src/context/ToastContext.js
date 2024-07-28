@@ -14,7 +14,7 @@ const ToastContextProvider = ({ children }) => {
             message: message,
             type: type
         };
-        setToasts((previousToasts) => [...previousToasts, newToast]);
+        setToasts((previousToasts) => [...previousToasts.slice(-2), newToast]);
     };
 
     const closeToast = (id) => {
