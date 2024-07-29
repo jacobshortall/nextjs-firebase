@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 /**
  * @param {string} message
@@ -7,15 +7,22 @@ import { useEffect } from 'react';
  * @returns {React.ReactElement}
  */
 const Toast = ({ type, message, close }) => {
+    const toastRef = useRef(null);
     const className = (type += ' toast-wrapper');
 
     useEffect(() => {
-        setTimeout(close, 5000);
+        setTimeout(fadeOut, 5000);
     }, []);
 
+    const fadeOut = () => {
+        if (toastRef.current) {
+            toastRef.current.style.opacity = '0';
+        }
+    };
+
     return (
-        <div className={className}>
-            <span className="toast-close" onClick={close}>
+        <div className={className} ref={toastRef} onTransitionEnd={close}>
+            <span className="toast-close" onClick={fadeOut}>
                 &#x2715;
             </span>
             <span>{message}</span>
