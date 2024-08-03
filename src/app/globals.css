@@ -1,3 +1,8 @@
+/* Variables */
+:root {
+    --header-height: 60px;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -100,7 +105,7 @@ div {
     padding: 10px;
     background: #1B263B;
     margin-bottom: 30px;
-    height: 90px;
+    height: var(--header-height);
 }
 
 .header a {
