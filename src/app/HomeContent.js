@@ -21,14 +21,7 @@ const HomeContentWrapper = ({ children }) => {
         );
     }
 
-    return (
-        <>
-            <h1>Home</h1>
-
-            <h5>{user.email} logged in</h5>
-            {children}
-        </>
-    );
+    return <>{children}</>;
 };
 
 export default HomeContentWrapper;
