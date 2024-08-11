@@ -267,3 +267,17 @@ form .loader {
     padding-top: 8px;
     display: block;
 }
+
+.cd-events {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 4px;
+    gap: 4px;
+}
+
+.calendar-event {
+    font-size: 14px;
+    background: #1B263B;
+    border-radius: 4px;
+    padding: 8px;
+}
