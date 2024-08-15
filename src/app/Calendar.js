@@ -14,11 +14,7 @@ const Calendar = () => {
     const [days, setDays] = useState([...Array(daysOfMonth - 1)]);
 
     useEffect(() => {
-        const updateEvents = async () => {
-            await getEvents();
-        };
-
-        updateEvents();
+        getEvents();
     }, []);
 
     const getEvents = async () => {
