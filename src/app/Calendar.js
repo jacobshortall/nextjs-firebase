@@ -6,36 +6,50 @@ import { db } from './firebase';
 import CalendarDay from './CalendarDay';
 
 const Calendar = () => {
-    const [monthEvents, setMonthEvents] = useState();
-
     const date = new Date();
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const daysOfMonth = new Date(year, month, 0).getDate();
 
+    const [days, setDays] = useState([...Array(daysOfMonth - 1)]);
+
     useEffect(() => {
-        getEvents();
+        const updateEvents = async () => {
+            await getEvents();
+        };
+
+        updateEvents();
     }, []);
 
     const getEvents = async () => {
         const q = query(collection(db, 'events'));
-        let eventsClean = [];
 
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             let docData = doc.data();
             docData.time = docData.time.toDate();
-            eventsClean.push(docData);
-        });
 
-        setMonthEvents(eventsClean);
+            const updatedDays = [
+                ...days.slice(0, docData.time.getDate() - 1),
+                [docData],
+                ...days.slice(docData.time.getDate() - 1)
+            ];
+
+            setDays(updatedDays);
+        });
     };
 
     return (
         <div className="calendar">
-            {[...Array(daysOfMonth)].map((element, index) => (
-                <CalendarDay key={index} day={index + 1} events={monthEvents} />
-            ))}
+            {days.map((dayEvents, index) => {
+                return (
+                    <CalendarDay
+                        key={index}
+                        day={index + 1}
+                        events={dayEvents}
+                    />
+                );
+            })}
         </div>
     );
 };
