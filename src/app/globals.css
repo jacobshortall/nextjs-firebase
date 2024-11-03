@@ -172,15 +172,11 @@ div {
 
 .sign-out {
     background-color: transparent;
-    border: 1px solid #E0E1DD;
-    padding: 5px;
-    border-radius: 7px;
+    border: none;
     cursor: pointer;
     margin-inline: 15px;
-}
-
-.sign-out:hover {
-    outline: 1px solid #219ebc;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 /* Loading */
@@ -280,4 +276,33 @@ form .loader {
     background: #1B263B;
     border-radius: 4px;
     padding: 8px;
+}
+
+.calendar-event-container {
+    position: relative;
+}
+
+.calendar-event-modal {
+    position: absolute;
+    left: 108%;
+    min-height: 300px;
+    background: #415A77;
+    bottom: 0;
+    top: -100px;
+    width: 400px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: initial;
+}
+.calendar-event-modal::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: inherit;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    position: absolute;
+    left: -12px;
+    bottom: 170px;
 }
