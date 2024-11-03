@@ -9,30 +9,33 @@ const Calendar = () => {
     const date = new Date();
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
-    const daysOfMonth = new Date(year, month, 0).getDate();
+    const numDaysInMonth = new Date(year, month, 0).getDate();
 
-    const [days, setDays] = useState([...Array(daysOfMonth - 1)]);
+    const [days, setDays] = useState(
+        Array.from({ length: numDaysInMonth }, () => [])
+    );
 
     useEffect(() => {
         getEvents();
     }, []);
 
     const getEvents = async () => {
-        const q = query(collection(db, 'events'));
+        let updatedDays = [...days];
 
+        const q = query(collection(db, 'events'));
         const querySnapshot = await getDocs(q);
+
         querySnapshot.forEach((doc) => {
             let docData = doc.data();
             docData.time = docData.time.toDate();
 
-            const updatedDays = [
-                ...days.slice(0, docData.time.getDate() - 1),
-                [docData],
-                ...days.slice(docData.time.getDate() - 1)
-            ];
+            const dayIndex = docData.time.getDate() - 1;
 
-            setDays(updatedDays);
+            let dayEvents = updatedDays[dayIndex];
+            dayEvents.push(docData);
         });
+
+        setDays(updatedDays);
     };
 
     return (
